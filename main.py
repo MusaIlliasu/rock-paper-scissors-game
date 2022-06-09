@@ -10,19 +10,19 @@ Winning Rules of the Rock paper scissor game as follows:
 while True:
     print("""
     Enter choice:
-        1 for Rock
-        2 for paper
-        3 for scissor
+        R for Rock
+        P for Paper
+        S for Scissor
         """)
 
-    user_choice = int(input("User turn: "))
+    user_choice = input("User turn: ").upper()
 
-    while user_choice > 3 or user_choice < 1:
-        user_choice = int(input("Enter a valid input: "))
+    while user_choice not in ["R", "P", "S"]:
+        user_choice = input("Enter a valid input: ").upper()
 
-    if user_choice == 1:
+    if user_choice == "R":
         choice_name = "Rock"
-    elif user_choice == 2:
+    elif user_choice == "P":
         choice_name = "Paper"
     else:
         choice_name = "Scissor"
@@ -30,14 +30,14 @@ while True:
     print("User choice is:", choice_name)
 
     print("Computer turn")
-    comp_choice = random.randint(1, 3)
+    comp_choice = random.choice(["R", "P", "S"])
 
     while comp_choice == user_choice:
-        comp_choice = random.randint(1, 3)
+        comp_choice = random.choice(["R", "P", "S"])
 
-    if comp_choice == 1:
+    if comp_choice == "R":
         comp_choice_name = "Rock"
-    elif comp_choice == 2:
+    elif comp_choice == "P":
         comp_choice_name = "Paper"
     else:
         comp_choice_name = "Scissor"
@@ -45,13 +45,13 @@ while True:
     print("Computer choice is:", comp_choice_name)
     print(choice_name, "vs", comp_choice_name)
 
-    if ((user_choice == 1 and comp_choice == 2) or
-            (user_choice == 2 and comp_choice == 1)):
+    if ((user_choice == "R" and comp_choice == "P") or
+            (user_choice == "P" and comp_choice == "R")):
         print("Paper wins")
         result = "Paper"
 
-    elif ((user_choice == 1 and comp_choice == 3) or
-          (user_choice == 3 and comp_choice == 1)):
+    elif ((user_choice == "R" and comp_choice == "S") or
+          (user_choice == "S" and comp_choice == "R")):
         print("Rock wins")
         result = "Rock"
     else:
